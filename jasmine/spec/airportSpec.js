@@ -28,4 +28,16 @@ describe("Airport", function(){
     expect(airport.takeOff(plane)).toContain("plane has taken off");
   });
 
+  it("can check the weather forecast", function(){
+    airport = new Airport();
+    weather = new Weather();
+      expect(airport.isStormy).toBeDefined();
+       spyOn(weather,'forecast').and.returnValue("stormy");
+      expect(airport.isStormy()).toBe(true);
+
+  });
+
+
+
+
 });
