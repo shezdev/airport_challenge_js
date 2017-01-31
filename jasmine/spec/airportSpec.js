@@ -9,5 +9,11 @@ describe("Airport", function(){
     airport = new Airport();
     expect(airport.land).toBeDefined();
   });
+  it("confirms when a plane has landed", function(){
+    airport = new Airport();
+    plane = new Plane();
+    expect(airport.land(plane)).toContain("plane has landed");
+
+  });
 
 });
