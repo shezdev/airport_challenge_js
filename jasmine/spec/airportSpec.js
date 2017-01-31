@@ -16,4 +16,16 @@ describe("Airport", function(){
 
   });
 
+  it("can ask a plane to take off", function(){
+    // expect(airport.land).toEqual(jasmine.anything());
+    airport = new Airport();
+      expect(airport.takeOff).toBeDefined();
+  });
+
+  it("confirms when a plane has taken off", function(){
+    airport = new Airport();
+    plane = new Plane();
+    expect(airport.takeOff(plane)).toContain("plane has taken off");
+  });
+
 });
