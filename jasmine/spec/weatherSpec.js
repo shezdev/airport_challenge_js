@@ -10,6 +10,12 @@ describe("Weather", function(){
     weather = new Weather();
     expect(weather.forecast).toBeDefined();
   });
+  // it("returns either sunny or stormy", function(){
+  //   weather = new Weather();
+  //   //weather.forecast();
+  //   spyOn(weather,'forecast').and.returnValue("stormy");
+  //   expect(weather._weather).toBe("stormy");
+  // });
 
 
 });
