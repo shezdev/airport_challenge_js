@@ -10,7 +10,7 @@ Airport = function() {
   Airport.prototype.takeOff = function(plane) {
     condition = this.isStormy();
     if ( condition == true) {
-    throw ("Can't take off when its stormy");
+    throw new Error("Can't take off when its stormy");
     }
     else{
     return "plane has taken off"}
