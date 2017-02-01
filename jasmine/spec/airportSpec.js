@@ -16,6 +16,7 @@ describe("Airport", function(){
   });
 
   it("confirms when a plane has landed", function(){
+    spyOn(airport,'isStormy').and.returnValue(false);
     expect(airport.land(plane)).toContain("plane has landed");
     expect(airport.planes).toContain(plane)
   });
@@ -28,8 +29,24 @@ describe("Airport", function(){
     expect(airport.planes).toBeDefined();
   });
 
+  it("can ask a plane to takeoff", function(){
+    expect(airport.takeOff).toBeDefined();
+  });
+
+  it("confirms when a plane has taken off", function(){
+    spyOn(airport,'isStormy').and.returnValue(false);
+    airport.land(plane);
+    expect(airport.takeOff(plane)).toContain("plane has taken off");
+    expect(airport.planes).not.toContain(plane)
+  });
+
   it("should throw an error if planes want to take off when it's stormy",function(){
     spyOn(airport,'isStormy').and.returnValue(true);
     expect(function(){airport.takeOff(plane)}).toThrowError("Can't take off when its stormy");
+  });
+
+  it("should throw an error if planes want to land when it's stormy",function(){
+    spyOn(airport,'isStormy').and.returnValue(true);
+    expect(function(){airport.land(plane)}).toThrowError("Can't land when its stormy");
   });
 });
