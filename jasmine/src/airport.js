@@ -1,8 +1,8 @@
 const MAX_CAPACITY = 10;
 
-Airport = function() {
+Airport = function(capacity = MAX_CAPACITY) {
   this.planes = [];
-  this.capacity = MAX_CAPACITY;
+  this.capacity = capacity;
 };
 
   Airport.prototype.land = function(plane) {
