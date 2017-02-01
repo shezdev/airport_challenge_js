@@ -5,7 +5,6 @@
 describe("Airport", function(){
 
   it("can ask a plane to land", function(){
-    // expect(airport.land).toEqual(jasmine.anything());
     airport = new Airport();
     expect(airport.land).toBeDefined();
   });
@@ -13,31 +12,19 @@ describe("Airport", function(){
     airport = new Airport();
     plane = new Plane();
     expect(airport.land(plane)).toContain("plane has landed");
-
   });
-
-  it("can ask a plane to take off", function(){
-    // expect(airport.land).toEqual(jasmine.anything());
+  it("knows that isStormy returns either true or false",function(){
     airport = new Airport();
-      expect(airport.takeOff).toBeDefined();
+    expect(typeof airport.isStormy()).toEqual('boolean');
   });
-
-  it("confirms when a plane has taken off", function(){
+  it("should have an array of planes", function(){
     airport = new Airport();
-    plane = new Plane();
-    expect(airport.takeOff(plane)).toContain("plane has taken off");
-  });
+    expect(airport.planes).toBeDefined();
 
-  it("can check the weather forecast", function(){
+  });
+  it("should throw an error if planes want to take off when it's stormy",function(){
     airport = new Airport();
-    weather = new Weather();
-      expect(airport.isStormy).toBeDefined();
-       spyOn(weather,'forecast').and.returnValue("stormy");
-      expect(airport.isStormy()).toBe(true);
-
+    spyOn(airport,'isStormy').and.returnValue(true);
+    expect(function(){airport.takeOff(plane);}).toThrow("Can't take off when its stormy");
   });
-
-
-
-
 });
