@@ -3,6 +3,7 @@ Airport = function() {
 };
 
   Airport.prototype.land = function(plane) {
+    this.planes.push(plane)
     return "plane has landed";
   };
 

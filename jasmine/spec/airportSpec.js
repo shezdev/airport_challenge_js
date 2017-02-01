@@ -12,6 +12,7 @@ describe("Airport", function(){
     airport = new Airport();
     plane = new Plane();
     expect(airport.land(plane)).toContain("plane has landed");
+    expect(airport.planes).toContain(plane)
   });
   it("knows that isStormy returns either true or false",function(){
     airport = new Airport();
