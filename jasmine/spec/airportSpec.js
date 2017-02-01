@@ -49,4 +49,14 @@ describe("Airport", function(){
     spyOn(airport,'isStormy').and.returnValue(true);
     expect(function(){airport.land(plane)}).toThrowError("Can't land when its stormy");
   });
+
+  it("should throw an error if plane tries to land when airport is full",function () {
+    spyOn(airport,'isStormy').and.returnValue(false);
+    for (var i=1; i<=10; i++) {
+      airport.land(plane)
+    }
+    expect(function(){airport.land(plane)}).toThrowError("Airport is full!");
+  });
+
+
 });

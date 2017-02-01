@@ -1,5 +1,8 @@
+const MAX_CAPACITY = 10;
+
 Airport = function() {
   this.planes = [];
+  this.capacity = MAX_CAPACITY;
 };
 
   Airport.prototype.land = function(plane) {
@@ -8,8 +11,13 @@ Airport = function() {
     throw new Error("Can't land when its stormy");
     }
     else{
-    this.planes.push(plane)
-    return "plane has landed";
+      if (this.isFull()){
+      throw new Error("Airport is full!");
+      }
+      else {
+        this.planes.push(plane)
+        return "plane has landed";
+      }
     }
   };
 
@@ -30,5 +38,13 @@ Airport = function() {
       return true
     }
     else{return false};
+  };
 
-};
+  Airport.prototype.isFull = function() {
+    if (this.planes.length == this.capacity) {
+    return true;
+    }
+    else {
+      return false;
+    }
+  };
